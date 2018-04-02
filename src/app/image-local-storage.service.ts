@@ -24,7 +24,7 @@ export class LocalStorageService {
   addObjectToImageGallery(url){
     //console.log("object", object)
     let GalleryObject=this.getImageGallery();
-    
+
       //console.log('getImgData',JSON.stringify(this.getImgData(url)));
       let imgObject: Image = {id: 0, url: "", dateCreated: ""};
         if(GalleryObject===null){
@@ -39,7 +39,7 @@ export class LocalStorageService {
         console.log("GalleryObject",JSON.stringify(GalleryObject));
       GalleryObject.push(imgObject);
       localStorage.setItem('ImageGallery',JSON.stringify(GalleryObject));
-    
+        
   }
 
   deleteImage(id){

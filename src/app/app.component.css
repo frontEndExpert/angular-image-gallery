@@ -1,0 +1,12 @@
+.mypopup{
+    position: absolute !important;
+    display: block;
+    left: 20px;
+    top: 20px;
+    width: 600px;
+    height: 500px;
+    margin: 10%;
+    padding: 20px;
+    background-color: aqua;
+    z-index: 100;
+}
