@@ -1,0 +1,55 @@
+.container{
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    padding: 5%!important;
+    z-index: 1;
+    
+}
+
+.header{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-content: space-between
+}
+
+.title{
+    order: 1;
+    width: auto;
+    flex-grow: 5;
+    align-content: stretch;
+    font-size: 14px!important;
+}
+
+.mybut{
+    order: 2!important;
+    width: 30px!important;
+    font-size: 48px!important;
+    cursor: pointer;
+}
+
+.flex-box{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+
+
+}
+
+.card-box{
+    width: 18%;
+    padding: 3px;
+    margin: 3px;
+    background-color: beige;
+    min-height: 200px;
+}
+
+
+
+.img-box{
+    width: 100%;
+    height: auto;
+}

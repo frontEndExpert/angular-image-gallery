@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header">
+      <span class="title">Image Gallery</span>
+      <button class="btn btn-default" (click)="this.ls.deleteAllImages();">Delete All Galery</button>
+      <button (click)="showAddWin()" class="btn btn-link mybut" type="button">
+          <span class="glyphicon glyphicon-plus-sign" ></span>
+      </button>
+      
+  </div>
+  <div class="flex-box">
+    <div class="card-box" *ngFor="let imgObject of galleryObject | paginate: { id:'gallery', itemsPerPage: maxSize, currentPage: currentPage };">
+      <img class="img-box"  src='{{imgObject.url}}' (click)="openDisplayImage(imgObject.id)" />
+      <span>{{imgObject.id}} {{imgObject.dateCreated}}</span>
+    </div>
+  </div>
+  <p>Total Number of Images in Gallery: {{numberOfImages}}</p>
+  <div id="pagination" class="pagination-box">
+      <pagination-controls id="gallery" (pageChange)="currentPage = $event" [maxSize]="5" directionLinks="true" autoHide="true"
+          [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+      </pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+.mypopup{
+    /* position: absolute !important;
+    display: block;
+    left: 20px;
+    top: 20px; */
+    width: 90%;
+    max-width: 900px;
+    max-height: 800px;
+    min-height: 75vh;
+    
+    margin: 5%;
+    padding: 20px;
+}
+
+div.upload-header{
+    font-size: 18px!important;
+    margin-bottom: 10px!important;
+    display: flex!important;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-content: space-between;
+}
+
+div.upload-header > .imginput {
+    order: 1;
+    width: 200px;
+    flex-grow: 5;
+    align-content: stretch;
+    font-size: 18px!important;
+}
+div.upload-header > .close{
+    order: 2!important;
+    width: 30px!important;
+    font-size: 48px!important;
+    cursor: pointer;
+    text-align: right!important;
+    color: brown;
+}
+#img1.displayImage{
+    height: 600px!important;
+    width: auto;
+    max-width: 900px!important;
+    max-height: 600px!important;
+}
+.addbut{
+    margin: 10px;
+}
+.myimg{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.visible{
+    visibility: hidden;
+}

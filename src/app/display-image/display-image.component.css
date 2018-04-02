@@ -1,0 +1,26 @@
+
+
+.header{
+    display: flex;
+    width: 90%;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    z-index: 100;
+}
+
+.big-img{
+    order: 1;
+    width: 100%;
+    flex-grow: 5;
+    align-content: stretch;
+    font-size: 14px!important;
+}
+
+.mybut{
+    order: 2!important;
+    width: 30px!important;
+    font-size: 48px!important;
+    cursor: pointer;
+}
+
+
