@@ -6,21 +6,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {ModalModule, BsModalService} from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GalleryComponent } from './gallery/gallery.component';
 
 import {LocalStorageService} from './image-local-storage.service';
-import { DisplayImageComponent } from './display-image/display-image.component';
 import {ModalsService} from './modals.service';
-import { ModalsComponent } from './modals/modals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadImageComponent,
-    GalleryComponent,
-    DisplayImageComponent,
-    ModalsComponent
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

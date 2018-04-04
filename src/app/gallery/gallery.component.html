@@ -17,7 +17,7 @@
       <a data-toggle="modal" data-target="#DisplayModal" (click)="displayImg(imgObject.id)">
         <img class="img-box" src='{{imgObject.url}}' />
       </a>
-      <span>id: {{imgObject.id}} date: {{imgObject.dateCreated}} index: {{i}}</span>
+      <!--span> FOR DEBUGGING id: {{imgObject.id}} date: {{imgObject.dateCreated}} index: {{i}}</span-->
     </div>
   </div>
 
@@ -26,6 +26,7 @@
       [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
     </pagination-controls>
   </div>
+  
   <div class="footer">
     <div class="ftitle">
       Total Number of Images in Gallery: {{numberOfImages}}
@@ -42,6 +43,7 @@
 
 </div>
 
+<!-- Display Image PopUp -->
 <div *ngIf="this.imgObject" id="DisplayModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -64,14 +66,15 @@
   </div>
 </div>
 
-<div id="AddImgModal" class="modal fade" role="dialog">
+<!-- Add Image PopUp -->
+<div id="AddImgModal" class="modal fade" [class.show]="showModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <span class="imginput">
           <input #imgInput type='file' (change)="readUrl($event)">
         </span>
-        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" (click)="this.imgUrl.nativeElement.value = ''; this.url='';">
+        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" (click)="this.imgUrl.nativeElement.value = ''; this.url=''; showModal=false">
           <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
         </button>
       </div>
@@ -80,7 +83,7 @@
           <img id="img1" [src]="this.url" alt="your image" class="displayImage" width="100%" height="auto" />
         </div>
         <div class="align-center">
-          <button type="button" class="btn btn-default addbut" data-dismiss="modal" (click)="addImageToGallery(); this.imgUrl.nativeElement.value = ''; this.url='';">
+          <button type="button" class="btn btn-default addbut"  (click)="addImageToGallery(); this.imgUrl.nativeElement.value = ''; this.url=''; this.showModal=false;" data-dismiss="modal">
             Add
             <img src="assets/images/add.png" width="30px" height="30px" alt="Add This Image to Galery" />
           </button>

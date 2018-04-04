@@ -28,11 +28,9 @@ export class GalleryComponent implements OnInit {
   }
 
   url: any = "";
-
-  imgId: number = 0;
   currentPage = 1; // the page being displayed by the pagination PIPE
   maxSize: number = 8; // the number of cars/items display on 1 page
-
+  showModal: boolean= false;
   ngOnInit() {
     this.galleryObject = this.ls.getImageGallery();
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
@@ -47,18 +45,11 @@ export class GalleryComponent implements OnInit {
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();
     const changes = this.differ.diff(this.galleryObject);
-    /* 
-    	  if (changes) {
-    	    console.log('new change');// for splitting up changes
-          changes.forEachAddedItem(r => console.log('added ', r));
-          changes.forEachRemovedItem(r => console.log('removed ', r))
-          changes.forEachMovedItem(r => console.log('moved ', r))
-        }
-         */
   }
 
   addImageToGallery() {
     this.ls.addObjectToImageGallery(this.url);
+
   }
 
   displayImg(id) {
@@ -66,12 +57,7 @@ export class GalleryComponent implements OnInit {
       imgObj => imgObj.id === id
     )[0];
   }
-  /* displayImageArr() {
-    return this.galleryObject.filter(function (item) {
-      return item.Id != this.imgId;
-    })[0];
 
-  } */
   deleteAllImages() {
     if (confirm("Are you sure to delete all the images")) {
       this.ls.deleteAllImages();
