@@ -2,7 +2,6 @@ import {  Component,  OnInit,  EventEmitter,  Input,  Output,  ChangeDetectorRef
           ChangeDetectionStrategy,  IterableDiffers,  IterableDiffer,  ViewChild } from '@angular/core';
 import {  FormsModule} from '@angular/forms';
           import {  LocalStorageService} from '../image-local-storage.service';
-import {  ModalsService,  ModalStateParam,  ModalType } from '../modals.service';
 
 @Component({
   selector: 'app-gallery',
@@ -19,7 +18,6 @@ export class GalleryComponent implements OnInit {
   imgUrl: any;
 
   constructor(
-    private _modalsService: ModalsService,
     private formImg: FormsModule,
     private ls: LocalStorageService,
     private ref: ChangeDetectorRef,
