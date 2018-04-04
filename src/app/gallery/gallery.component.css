@@ -30,7 +30,9 @@
     font-size: 48px!important;
     cursor: pointer;
 }
-
+.align-center{
+    text-align: center;
+}
 .flex-box{
     display: flex;
     width: 100%;

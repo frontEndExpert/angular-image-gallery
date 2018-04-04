@@ -14,3 +14,9 @@ body, p, span, button, a, {
         margin: 5vw 5vw!important;
     }
 }
+
+.glyphicon-remove-sign {
+    font-size: 48px!important;
+    cursor: pointer;
+    color: red;
+}

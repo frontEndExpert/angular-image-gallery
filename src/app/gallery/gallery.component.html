@@ -1,15 +1,21 @@
 <div class="container">
   <div class="header">
       <span class="title">Image Gallery</span>
-      <button class="btn btn-default" (click)="this.ls.deleteAllImages();">Delete All Galery</button>
-      <button (click)="showAddWin()" class="btn btn-link mybut" type="button">
+      <!--button (click)="showAddWin()" class="btn btn-link mybut" type="button">
           <span class="glyphicon glyphicon-plus-sign" ></span>
+      </button-->
+      <button type="button" class="btn btn-link mybut" data-toggle="modal" data-target="#AddImgModal">
+          <img src="assets/images/add.png" width="40px" height="40px" alt="Add Image to Galery" />
       </button>
-      
   </div>
   <div class="flex-box">
-    <div class="card-box" *ngFor="let imgObject of galleryObject | paginate: { id:'gallery', itemsPerPage: maxSize, currentPage: currentPage };">
-      <img class="img-box"  src='{{imgObject.url}}' (click)="openDisplayImage(imgObject.id)" />
+    <!-- openDisplayImage(i) -->
+    <div class="card-box" *ngFor="let imgObject of galleryObject | paginate: 
+      { id:'gallery', itemsPerPage: maxSize, currentPage: currentPage }; let i = index;">
+      <a data-toggle="modal" data-target="#DisplayModal" 
+      (click)="imgIndex=i" >
+        <img class="img-box"  src='{{imgObject.url}}'  />
+      Open Modal</a>
       <span>{{imgObject.id}} {{imgObject.dateCreated}}</span>
     </div>
   </div>
@@ -19,4 +25,81 @@
           [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
       </pagination-controls>
   </div>
+  <div class="footer">
+      <button class="btn btn-link " (click)="this.deleteAllImages();">
+          <img src="assets/images/delall.png" width="30px" height="30px" alt="Delete All Galery Images" />
+      </button> Delete All Galery Images!!!
+  </div>
+
 </div>
+
+<div *ngIf="this.galleryObject" id="DisplayModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Date Created: {{this.galleryObject[imgIndex].dateCreated}}</h4>
+        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="bigImg" class="big-img" src='{{this.galleryObject[imgIndex].url}}' width="100%" height="auto" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  id="AddImgModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="imginput" >
+                <input type='file' (change)="readUrl($event)">
+          </span>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="this.url && this.url.length > 5" class="myimg">
+                <img id="img1" [src]="this.url" alt="your image" 
+                class="displayImage img-responsive" width="90%" >
+                <div class="align-center">
+                  <button type="button" class="addbut"
+                  (click)="this.addImageToGallery()">
+                  <img src="assets/images/add.png" width="40px" height="40px" alt="Add This Image to Galery" />
+                </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #addImgTemplate>
+      <div class="container-fluid mypopup " >
+        <div class="upload-header">
+          <span class="imginput" >
+            <input type='file' (change)="readUrl($event)">
+          </span>
+          <button type="button" class="close pull-right" aria-label="Close" >
+            <!--span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span  (click)="hide()" -->XXX
+            <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+          </button>
+        </div> 
+        <div *ngIf="this.url && this.url.length > 5" class="myimg">
+            <img id="img1" [src]="this.url" alt="your image" 
+            class="displayImage img-responsive" width="90%" >
+            <p><button  type="button" class="addbut"
+              (click)="addImageToGallery()">Add</button></p>
+        </div>  
+      </div>
+    </ng-template>
