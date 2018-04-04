@@ -9,6 +9,23 @@
     
 }
 
+
+
+@media screen and (min-width: 920px){
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-gap: 30px;
+  }
+}
+@media screen and (max-width: 919px){
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        grid-gap: 30px;
+      }
+}
+
 .header{
     display: flex;
     width: 100%;
@@ -22,12 +39,15 @@
     flex-grow: 5;
     align-content: stretch;
     font-size: 14px!important;
+    text-align: center;
 }
-
-.mybut{
+.btnadd{
     order: 2!important;
-    width: 30px!important;
+    width: 60px!important;
     font-size: 48px!important;
+    
+}
+.mybut{
     cursor: pointer;
 }
 .align-center{
@@ -49,9 +69,47 @@
     min-height: 200px;
 }
 
-
+.addbut{
+    margin: 10px;
+    border-radius: 20px;
+    font-size: 24px;
+}
 
 .img-box{
     width: 100%;
     height: auto;
+}
+
+
+.myimg{
+    width: 100%!important;
+    text-align: center!important;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#img1.displayImage{
+    min-height: 100px!important;
+    width: auto;
+    max-width: 100%!important;
+    max-height: 600px!important;
+    text-align: center!important;
+}
+
+.footer{
+    display: flex;
+    width: 100%!important;
+    flex-wrap: nowrap;
+    align-content: space-between
+}
+.ftitle{
+    order: 1;
+    width: auto;
+    flex-grow: 5;
+    align-content: stretch;
+    font-size: 16px;
+}
+.fbut{
+    order: 2;
+    width: 200px;
 }

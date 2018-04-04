@@ -36,15 +36,16 @@ export class LocalStorageService {
 
         imgObject.url=url;
         imgObject.dateCreated = (this.getImgData())?this.getImgData():"1/1/1111";
-        console.log("GalleryObject",JSON.stringify(GalleryObject));
+        //console.log("GalleryObject",JSON.stringify(GalleryObject));
       GalleryObject.push(imgObject);
       localStorage.setItem('ImageGallery',JSON.stringify(GalleryObject));
         
   }
 
   deleteImage(id){
-    let listOfImages=this.getImageGallery();
-    listOfImages.splice(id,1);
+    let listOfImages=this.getImageGallery().filter(
+      imgObj => imgObj.id != id
+      );
     localStorage.setItem('ImageGallery',JSON.stringify(listOfImages));
   }
 
