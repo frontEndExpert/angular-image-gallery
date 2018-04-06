@@ -7,7 +7,8 @@ export class ModalStateParam {
 }
 
 export enum ModalType {
-  addImg
+  addImg,
+  displayImg
 };
 
 @Injectable()

@@ -38,11 +38,18 @@ export class GalleryComponent implements OnInit {
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
   }
 
-  deleteImage(id: number) {
-    if (confirm("Are you sure to delete this image")) {
-      this.ls.deleteImage(id);
-    }
+
+  public showAddWin() {
+    console.log("modals:");
+    this._modalsService.setModalState(new ModalStateParam(ModalType.addImg, true));
   }
+
+  showDisplayImg(id){
+    console.log("modals:");
+    this._modalsService.setModalState(new ModalStateParam(ModalType.displayImg, true));
+  }
+
+
 
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();
@@ -59,6 +66,7 @@ export class GalleryComponent implements OnInit {
 
   addImageToGallery() {
     this.ls.addObjectToImageGallery(this.url);
+
   }
 
   displayImg(id) {

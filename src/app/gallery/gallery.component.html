@@ -1,91 +1,36 @@
-<div class="container-fluid">
-  <div class="header">
-    <div class="title">
-      <span>Image Gallery</span>
-    </div>
-    <div class="btnadd mybut">
-      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#AddImgModal">
-        <img src="assets/images/add.png" width="40px" height="40px" alt="Add Image to Galery" />
-      </button>
+<div class="container">
+    <div class="header">
+        <span class="title">Image Gallery</span>
+        <!--button (click)="showAddWin()"
+        data-toggle="modal" data-target="#AddImgModal" class="btn btn-link mybut" type="button">
+            <span class="glyphicon glyphicon-plus-sign" ></span>
+        </button-->
+        <button type="button" class="btn btn-link mybut"  (click)="showAddWin()">
+            <img src="assets/images/add.png" width="40px" height="40px" alt="Add Image to Galery" />
+        </button>
     </div>
 
-  </div>
   <div class="cards">
     <!-- gallery images here -->
     <div *ngFor="let imgObject of galleryObject | paginate: 
       { id:'gallery', itemsPerPage: maxSize, currentPage: currentPage }; let i = index;">
-      <a data-toggle="modal" data-target="#DisplayModal" (click)="displayImg(imgObject.id)">
+      <a (click)="showDisplayImg(imgObject.id)">
         <img class="img-box" src='{{imgObject.url}}' />
       </a>
-      <span>id: {{imgObject.id}} date: {{imgObject.dateCreated}} index: {{i}}</span>
+      <!--span> FOR DEBUGGING id: {{imgObject.id}} date: {{imgObject.dateCreated}} index: {{i}}</span-->
     </div>
   </div>
 
-  <div id="pagination " class="pagination-box align-center">
-    <pagination-controls id="gallery" (pageChange)="currentPage = $event" [maxSize]="5" directionLinks="true" autoHide="true"
-      [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
-    </pagination-controls>
-  </div>
-  <div class="footer">
-    <div class="ftitle">
-      Total Number of Images in Gallery: {{numberOfImages}}
+    <p>Total Number of Images in Gallery: {{numberOfImages}}</p>
+    <div id="pagination" class="pagination-box">
+        <pagination-controls id="gallery" (pageChange)="currentPage = $event" [maxSize]="5" directionLinks="true" autoHide="true"
+            [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
     </div>
-    <div class="fbut">
-      <button class="btn btn-default addbut" (click)="this.deleteAllImages();">
-        Delete All Images!
-        <img src="assets/images/delall.png" width="30px" height="30px" alt="Delete All Galery Images"
-        />
-      </button>
-    </div>
-
-  </div>
-
-</div>
-
-<div *ngIf="this.imgObject" id="DisplayModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title text-center"> Date Created:{{this.imgObject.dateCreated}}</h4>
-        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
-          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
-        </button>
-      </div>
-      <div class="modal-body">
-        <img id="bigImg" class="big-img" src='{{this.imgObject.url}}' width="100%" height="auto" />
-        <div class="align-center">
-          <button type="button" class="btn btn-default addbut" data-dismiss="modal" (click)="deleteImage(this.imgObject.id);">
-            Delete Image
-            <img src="assets/images/del.png" width="30px" height="30px" alt="Delete This Image!" />
-          </button>
-        </div>
-      </div>
+    <div class="footer">
+        <button class="btn btn-link " (click)="this.deleteAllImages();">
+            <img src="assets/images/delall.png" width="30px" height="30px" alt="Delete All Galery Images" />
+        </button> Delete All Galery Images!!!
     </div>
   </div>
-</div>
-
-<div id="AddImgModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="imginput">
-          <input #imgInput type='file' (change)="readUrl($event)">
-        </span>
-        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" (click)="this.imgUrl.nativeElement.value = ''; this.url='';">
-          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
-        </button>
-      </div>
-      <div *ngIf="this.url && this.url.length > 5" class="modal-body">
-        <div class="myimg">
-          <img id="img1" [src]="this.url" alt="your image" class="displayImage" width="100%" height="auto" />
-        </div>
-        <div class="align-center">
-          <button type="button" class="btn btn-default addbut" data-dismiss="modal" (click)="addImageToGallery(); this.imgUrl.nativeElement.value = ''; this.url='';">
-            Add
-            <img src="assets/images/add.png" width="30px" height="30px" alt="Add This Image to Galery" />
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+ 

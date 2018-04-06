@@ -17,11 +17,12 @@ export class ModalsComponent implements OnInit {
       switch(state.modalType) {
         case ModalType.addImg:
           this.showAddModal = state.isShown;
-          console.log("should see")
+          console.log("should see");
         break;
-    //    case ModalType.displayImg:
-    //      this.showDisplayModal = state.isShown;
-    //    break;
+        case ModalType.displayImg:
+          this.showDisplayModal = state.isShown;
+          console.log("display image window")
+        break;
       }
     });
   }
