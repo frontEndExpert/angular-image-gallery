@@ -1,5 +1,9 @@
 import { Component, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import {LocalStorageService} from './image-local-storage.service';
+import { UploadImageComponent } from './upload-image/upload-image.component';
+import { GalleryComponent } from './gallery/gallery.component';
+
+
 
 @Component({
   selector: 'app-root',
@@ -16,6 +20,7 @@ export class AppComponent {
   //updateAddWin($event){
   //    this.parentAddwin = $event;
   //}
+
   constructor( private ls: LocalStorageService) { 
   }
  

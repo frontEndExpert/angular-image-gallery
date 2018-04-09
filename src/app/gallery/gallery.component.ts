@@ -3,6 +3,68 @@ import {  Component,  OnInit,  EventEmitter,  Input,  Output,  ChangeDetectorRef
 import {  FormsModule} from '@angular/forms';
           import {  LocalStorageService} from '../image-local-storage.service';
 import {  ModalsService,  ModalStateParam,  ModalType } from '../modals.service';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+import { UploadImageComponent } from '../upload-image/upload-image.component';
+import { DisplayImageComponent } from '../display-image/display-image.component';
+
+@Component({
+  selector: 'modal-addimg',
+  template: `
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title">Hello</h4>
+    </div>
+    <div class="modal-body">
+      <p>Yes</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  `
+})
+export class ngbModalAddImg {
+  @Input() name;
+  @Input() data: any;
+  dataValue: string;
+
+  constructor(public activeModal: NgbActiveModal) {}
+  
+  ngDoCheck() {
+   // this.dataValue = this._lazyService.stringify(this.data);
+  }
+}
+
+@Component({
+  selector: 'modal-displayimg',
+  template: `
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title">Hello Display</h4>
+    </div>
+    <div class="modal-body">
+      <p>Yes</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  `
+})
+export class ngbModalDisplayImg {
+  @Input() name;
+  @Input() data: any;
+  dataValue: string;
+
+  constructor(public activeModal: NgbActiveModal) {}
+  
+  ngDoCheck() {
+   // this.dataValue = this._lazyService.stringify(this.data);
+  }
+}
 
 @Component({
   selector: 'app-gallery',
@@ -19,6 +81,8 @@ export class GalleryComponent implements OnInit {
   imgUrl: any;
 
   constructor(
+    private modalService: NgbModal,
+    public activeModal: NgbActiveModal,
     private _modalsService: ModalsService,
     private formImg: FormsModule,
     private ls: LocalStorageService,
@@ -40,16 +104,28 @@ export class GalleryComponent implements OnInit {
 
 
   public showAddWin() {
-    console.log("modals:");
+    console.log("showAddWin:");
     this._modalsService.setModalState(new ModalStateParam(ModalType.addImg, true));
   }
 
   showDisplayImg(id){
-    console.log("modals:");
+    console.log("showDisplayImg:");
     this._modalsService.setModalState(new ModalStateParam(ModalType.displayImg, true));
   }
 
-
+  open(id) {
+    if(id==1){
+      const modalRef = this.modalService.open(UploadImageComponent);
+      modalRef.componentInstance.name = 'World';
+      modalRef.componentInstance.data = {
+        foo: 'bar',
+        name: 'World'
+      }
+    }
+    else if (id==2){
+      const modalRef = this.modalService.open(DisplayImageComponent);
+    }
+  }
 
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();

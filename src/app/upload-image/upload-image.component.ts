@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalStorageService} from '../image-local-storage.service';
 import { ModalsService } from '../modals.service';
 import { ModalStateParam, ModalType } from '../modals.service';
+import { Image } from '../shared/models/Image';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-upload-image',
@@ -22,7 +24,8 @@ export class UploadImageComponent extends ModalComponent{
  
 
   constructor( private ls: LocalStorageService, private _zone: NgZone,
-    _modalsService: ModalsService,_bsModalService: BsModalService) {
+    _modalsService: ModalsService,_bsModalService: BsModalService,
+    public activeModal: NgbActiveModal) {
           super(_bsModalService, _modalsService);
 }
 
@@ -30,7 +33,7 @@ export class UploadImageComponent extends ModalComponent{
   addImageToGallery(){
     this.ls.addObjectToImageGallery(this.url);
     //this.ref.markForCheck();private ref: ChangeDetectorRef
-    this.hide();
+    //this.hide();
   }
 
   readUrl(event:any) {
@@ -46,5 +49,9 @@ export class UploadImageComponent extends ModalComponent{
   ngOnInit() {
     super.ngOnInit();
   }
-  
+
+  close(){
+    this.activeModal.close();
+  }
+
 }

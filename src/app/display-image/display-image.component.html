@@ -1,15 +1,21 @@
 <!--div *ngIf="this.imgObject" id="DisplayModal" class="modal fade" role="dialog"-->
-<ng-template #displayImgTemplate>     
-  <div class="modal-dialog">
+<!--ng-template #displayImgTemplate {{this.imgObject.dateCreated}}{{this.imgObject.url}} -->
+<!--div class="modal fade">
+  <div class="modal-dialog"-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title text-center"> Date Created:{{this.imgObject.dateCreated}}</h4>
-        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
-          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+        <h4 class="modal-title text-center"> Date Created:</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">
+            <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+          </span>
         </button>
+        <!--button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+        </button-->
       </div>
       <div class="modal-body">
-        <img id="bigImg" class="big-img" src='{{this.imgObject.url}}' width="100%" height="auto" />
+        <img id="bigImg" class="big-img" src='../assets/images/sample.jpg' width="100%" height="auto" />
         <div class="align-center">
           <button type="button" class="btn btn-default addbut" data-dismiss="modal" (click)="deleteImage(this.imgObject.id);">
             Delete Image
@@ -18,5 +24,6 @@
         </div>
       </div>
     </div>
-  </div>
-</ng-template>
+  <!--/div>
+</div-->
+<!--/ng-template-->

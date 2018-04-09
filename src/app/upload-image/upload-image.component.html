@@ -1,14 +1,17 @@
 <!-- "showAddFile"-->
-<ng-template #addImgTemplate>
+<!--ng-template #addImgTemplate-->
   <div class="modal fade">
     <div class="modal-content">
       <div class="modal-header">
         <span class="imginput">
           <input #imgInput type='file' (change)="readUrl($event)">
         </span>
-        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" (click)="this.imgUrl.nativeElement.value = ''; this.url=''; showModal=false">
-          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">X<img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />X</span>
         </button>
+        <!--button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" (click)="this.imgUrl.nativeElement.value = ''; this.url=''; showModal=false">
+          <img src="assets/images/close.png" width="40px" height="40px" alt="Close Window" />
+        </button-->
       </div>
       <div *ngIf="this.url && this.url.length > 5" class="modal-body">
         <div class="myimg">
@@ -24,4 +27,4 @@
       </div>
     </div>
   </div>
-</ng-template>
+<!--/ng-template-->

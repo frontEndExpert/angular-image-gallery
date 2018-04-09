@@ -12,9 +12,7 @@ export abstract class ModalComponent implements OnInit {
     constructor (private _bsModalService: BsModalService,
                 private _modalsService: ModalsService,
                 private options?: any) {
-        const defaultOptions = {
-            class: 'model-lg'
-        };
+        const defaultOptions = { class: 'model-lg' };
 
         options = options || defaultOptions;
     }

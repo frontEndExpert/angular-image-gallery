@@ -10,7 +10,7 @@ import { BsModalRef } from 'ngx-bootstrap';
 })
 export class ModalsComponent implements OnInit {
   showAddModal = false;
-  showDisplayModal = false;
+  showDisplayModal = true;
 
   constructor(private _modalsService: ModalsService) {
     this._modalsService.onModalStateChanged.subscribe((state: ModalStateParam) => {
@@ -20,7 +20,7 @@ export class ModalsComponent implements OnInit {
           console.log("should see");
         break;
         case ModalType.displayImg:
-          this.showDisplayModal = state.isShown;
+          this.showDisplayModal = true; // state.isShown;
           console.log("display image window")
         break;
       }
