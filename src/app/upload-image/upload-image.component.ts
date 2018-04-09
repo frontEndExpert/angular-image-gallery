@@ -25,7 +25,7 @@ export class UploadImageComponent{
   addImageToGallery(){
     this.ls.addObjectToImageGallery(this.url);
     //this.ref.markForCheck();private ref: ChangeDetectorRef
-    //this.hide();
+    this.activeModal.close();
   }
 
   readUrl(event:any) {

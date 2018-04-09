@@ -49,6 +49,13 @@ export class LocalStorageService {
     localStorage.setItem('ImageGallery',JSON.stringify(listOfImages));
   }
 
+  displayImage(id): Image{
+    return this.getImageGallery().filter(
+      imgObj => imgObj.id === id
+      );
+  }
+
+
   deleteAllImages(){
     localStorage.removeItem("ImageGallery");
   }

@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild, ChangeDetectorRef, ApplicationRef, NgZone } from '@angular/core';
+import {Component, OnInit, ViewChild, ChangeDetectorRef, ApplicationRef, NgZone,Input } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalStorageService} from '../image-local-storage.service';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Image } from '../shared/models/Image';
 @Component({
   selector: 'app-display-image',
   templateUrl: './display-image.component.html',
@@ -16,18 +17,24 @@ export class DisplayImageComponent {
     public activeModal: NgbActiveModal,  public modalService: NgbModal) {
 }
 
-url: any = "";
+//url: any = "";
+//@Input() imgId: any;
+//@Input() imgUrl: string;
+@Input() imgO: Image;
 
   ngOnInit() {
+    //console.log("this.imgO[0].id", JSON.stringify(this.imgO[0].id));
   }
 
 
   close(){
     this.activeModal.close();
   }
+
   deleteImage(id: number) {
     if (confirm("Are you sure to delete this image")) {
       this.ls.deleteImage(id);
+      this.activeModal.close();
     }
   }
 

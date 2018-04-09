@@ -7,63 +7,6 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadImageComponent } from '../upload-image/upload-image.component';
 import { DisplayImageComponent } from '../display-image/display-image.component';
 
-@Component({
-  selector: 'modal-addimg',
-  template: `
-    <div class="modal-header">
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h4 class="modal-title">Hello</h4>
-    </div>
-    <div class="modal-body">
-      <p>Yes</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
-})
-export class ngbModalAddImg {
-  @Input() name;
-  @Input() data: any;
-  dataValue: string;
-
-  constructor(public activeModal: NgbActiveModal) {}
-  
-  ngDoCheck() {
-   // this.dataValue = this._lazyService.stringify(this.data);
-  }
-}
-
-@Component({
-  selector: 'modal-displayimg',
-  template: `
-    <div class="modal-header">
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h4 class="modal-title">Hello Display</h4>
-    </div>
-    <div class="modal-body">
-      <p>Yes</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
-})
-export class ngbModalDisplayImg {
-  @Input() name;
-  @Input() data: any;
-  dataValue: string;
-
-  constructor(public activeModal: NgbActiveModal) {}
-  
-  ngDoCheck() {
-   // this.dataValue = this._lazyService.stringify(this.data);
-  }
-}
 
 @Component({
   selector: 'app-gallery',
@@ -101,18 +44,18 @@ export class GalleryComponent implements OnInit {
   }
 
 
-  open(id) {
-    if(id==1){
+  openAdd() {
       const modalRef = this.modalService.open(UploadImageComponent);
-      modalRef.componentInstance.name = 'World';
-      modalRef.componentInstance.data = {
-        foo: 'bar',
-        name: 'World'
-      }
-    }
-    else if (id==2){
-      const modalRef = this.modalService.open(DisplayImageComponent);
-    }
+  }
+
+  public openImg(id){
+    const modalRef = this.modalService.open(DisplayImageComponent);
+    let imgObj = this.ls.displayImage(id);
+    //console.log("imgObj= ", JSON.stringify(imgObj));
+    //modalRef.componentInstance.imgId = imgObj.id;
+    //modalRef.componentInstance.imgUrl = imgObj.url;
+    //modalRef.componentInstance.imgCdate = imgObj.dateCreated;
+    modalRef.componentInstance.imgO = imgObj;
   }
 
   ngDoCheck() {
