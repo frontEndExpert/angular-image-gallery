@@ -1,10 +1,6 @@
 import {Component, OnInit, ViewChild, ChangeDetectorRef, ApplicationRef, NgZone } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { ModalComponent } from '../modalComponent.extend';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalStorageService} from '../image-local-storage.service';
-import { ModalsService } from '../modals.service';
-import { ModalStateParam, ModalType } from '../modals.service';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-display-image',
@@ -16,12 +12,8 @@ export class DisplayImageComponent {
  // @ViewChild('displayImgTemplate') template: BsModalRef;
  // modalType = ModalType.displayImg;
 
-  constructor( private ls: LocalStorageService, private _zone: NgZone,
-    _modalsService: ModalsService,_bsModalService: BsModalService,
-    public activeModal: NgbActiveModal,
-    public modalService: NgbModal
-  ) {
-        //  super(_bsModalService, _modalsService);
+  constructor( private ls: LocalStorageService,
+    public activeModal: NgbActiveModal,  public modalService: NgbModal) {
 }
 
 url: any = "";

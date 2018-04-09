@@ -1,10 +1,6 @@
 import {Component, OnInit, ViewChild, ChangeDetectorRef, ApplicationRef, NgZone } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { ModalComponent } from '../modalComponent.extend';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LocalStorageService} from '../image-local-storage.service';
-import { ModalsService } from '../modals.service';
-import { ModalStateParam, ModalType } from '../modals.service';
 import { Image } from '../shared/models/Image';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,19 +10,15 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./upload-image.component.css']
 })
 
-export class UploadImageComponent extends ModalComponent{
-  @ViewChild('addImgTemplate') template: BsModalRef;
-  modalType = ModalType.addImg;
+export class UploadImageComponent{
+ // @ViewChild('addImgTemplate') template: BsModalRef;
 
   form: FormGroup;
   loading: boolean = false;
   url: any = "";
  
 
-  constructor( private ls: LocalStorageService, private _zone: NgZone,
-    _modalsService: ModalsService,_bsModalService: BsModalService,
-    public activeModal: NgbActiveModal) {
-          super(_bsModalService, _modalsService);
+  constructor( private ls: LocalStorageService, public activeModal: NgbActiveModal) {
 }
 
 
@@ -47,7 +39,6 @@ export class UploadImageComponent extends ModalComponent{
   }
 
   ngOnInit() {
-    super.ngOnInit();
   }
 
   close(){

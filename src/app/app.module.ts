@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {ModalModule, BsModalService} from 'ngx-bootstrap';
 
 import {Routes, RouterModule} from "@angular/router";
 import { routing }        from './app.routing';
@@ -14,8 +13,6 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { DisplayImageComponent } from './display-image/display-image.component';
 
 import {LocalStorageService} from './image-local-storage.service';
-import {ModalsService} from './modals.service';
-import { ModalsComponent } from './modals/modals.component';
 
 import {NgbModule, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,8 +30,7 @@ const routes: Routes = paths;
     AppComponent,
     UploadImageComponent,
     GalleryComponent,
-    DisplayImageComponent,
-    ModalsComponent
+    DisplayImageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +38,6 @@ const routes: Routes = paths;
     FormsModule, 
     ReactiveFormsModule,
     NgxPaginationModule,
-    ModalModule.forRoot(),
-    //routing,
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
@@ -53,8 +47,6 @@ const routes: Routes = paths;
     DisplayImageComponent 
 ],
   providers: [LocalStorageService,
-    BsModalService,
-    ModalsService,
     NgbModal,
     NgbActiveModal
   ],

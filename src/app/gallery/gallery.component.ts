@@ -1,9 +1,8 @@
-import {  Component,  OnInit,  EventEmitter,  Input,  Output,  ChangeDetectorRef,
-          ChangeDetectionStrategy,  IterableDiffers,  IterableDiffer,  ViewChild } from '@angular/core';
-import {  FormsModule} from '@angular/forms';
-          import {  LocalStorageService} from '../image-local-storage.service';
-import {  ModalsService,  ModalStateParam,  ModalType } from '../modals.service';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component,  OnInit,  EventEmitter,  Input,  Output,  ChangeDetectorRef,
+         ChangeDetectionStrategy,  IterableDiffers,  IterableDiffer,  ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from '../image-local-storage.service';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UploadImageComponent } from '../upload-image/upload-image.component';
 import { DisplayImageComponent } from '../display-image/display-image.component';
@@ -83,7 +82,6 @@ export class GalleryComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    private _modalsService: ModalsService,
     private formImg: FormsModule,
     private ls: LocalStorageService,
     private ref: ChangeDetectorRef,
@@ -102,16 +100,6 @@ export class GalleryComponent implements OnInit {
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
   }
 
-
-  public showAddWin() {
-    console.log("showAddWin:");
-    this._modalsService.setModalState(new ModalStateParam(ModalType.addImg, true));
-  }
-
-  showDisplayImg(id){
-    console.log("showDisplayImg:");
-    this._modalsService.setModalState(new ModalStateParam(ModalType.displayImg, true));
-  }
 
   open(id) {
     if(id==1){
@@ -150,12 +138,7 @@ export class GalleryComponent implements OnInit {
       imgObj => imgObj.id === id
     )[0];
   }
-  /* displayImageArr() {
-    return this.galleryObject.filter(function (item) {
-      return item.Id != this.imgId;
-    })[0];
 
-  } */
   deleteAllImages() {
     if (confirm("Are you sure to delete all the images")) {
       this.ls.deleteAllImages();
