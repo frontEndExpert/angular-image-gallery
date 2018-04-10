@@ -31,12 +31,10 @@ export class GalleryComponent implements OnInit {
   galleryObject: any = this.ls.getImageGallery();
   numberOfImages: number = (this.galleryObject) ? this.galleryObject.length : 0;
   differ: IterableDiffer < any > ;
-  url: any = "";
-
-  imgId: number = 0;
+  url: any = '';
   currentPage = 1; // the page being displayed by the pagination PIPE
-  maxSize: number = 8; // the number of cars/items display on 1 page
-
+  maxSize = 8; // the number of cars/items display on 1 page
+  showModal = false;
   ngOnInit() {
     this.galleryObject = this.ls.getImageGallery();
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
@@ -47,13 +45,13 @@ export class GalleryComponent implements OnInit {
       const modalRef = this.modalService.open(UploadImageComponent);
   }
 
-  public openImg(id){
+  public openImg(id) {
     const modalRef = this.modalService.open(DisplayImageComponent);
-    let imgObj = this.ls.displayImage(id);
-    //console.log("imgObj= ", JSON.stringify(imgObj));
-    //modalRef.componentInstance.imgId = imgObj.id;
-    //modalRef.componentInstance.imgUrl = imgObj.url;
-    //modalRef.componentInstance.imgCdate = imgObj.dateCreated;
+    const imgObj = this.ls.displayImage(id);
+    // console.log("imgObj= ", JSON.stringify(imgObj));
+    // modalRef.componentInstance.imgId = imgObj.id;
+    // modalRef.componentInstance.imgUrl = imgObj.url;
+    // modalRef.componentInstance.imgCdate = imgObj.dateCreated;
     modalRef.componentInstance.imgO = imgObj;
   }
 
@@ -82,17 +80,17 @@ export class GalleryComponent implements OnInit {
   }
 
   deleteAllImages() {
-    if (confirm("Are you sure to delete all the images")) {
+    if (confirm('Are you sure to delete all the images')) {
       this.ls.deleteAllImages();
     }
   }
 
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
         this.url = event.target.result;
-      }
+      };
       reader.readAsDataURL(event.target.files[0]);
     }
   }

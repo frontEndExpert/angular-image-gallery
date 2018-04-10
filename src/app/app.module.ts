@@ -4,26 +4,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-import {Routes, RouterModule} from "@angular/router";
-import { routing }        from './app.routing';
+import {Routes, RouterModule} from '@angular/router';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { DisplayImageComponent } from './display-image/display-image.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 import {LocalStorageService} from './image-local-storage.service';
 
 import {NgbModule, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 // loadChildren:
-//const appRoutes: Routes = [
-var paths: any = [ 
+// const appRoutes: Routes = [
+const paths: any = [
   {path: '', component: GalleryComponent },
   {path: 'gallery', component: GalleryComponent },
   {path: '**',  redirectTo: 'gallery' }
 ];
-//const routing = RouterModule.forRoot(paths, {useHash: true});
+// const routing = RouterModule.forRoot(paths, {useHash: true});
 const routes: Routes = paths;
 @NgModule({
   declarations: [
@@ -35,16 +35,16 @@ const routes: Routes = paths;
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    //RouterModule.forRoot(routes),
+    // RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
   entryComponents: [
     GalleryComponent,
     UploadImageComponent,
-    DisplayImageComponent 
+    DisplayImageComponent
 ],
   providers: [LocalStorageService,
     NgbModal,

@@ -15,7 +15,7 @@ export class LocalStorageService {
   getImgData(): string{
       var img1 = document.getElementById("img1");
       var created: string;
-      var allMetaData: any;
+      //console.log("img1",img1);
       EXIF.getData(img1, function() {
         created = EXIF.getTag(this, "DateTimeOriginal");
       });
@@ -36,7 +36,7 @@ export class LocalStorageService {
 
         imgObject.url=url;
         imgObject.dateCreated = (this.getImgData())?this.getImgData():"1/1/1111";
-        //console.log("GalleryObject",JSON.stringify(GalleryObject));
+        //console.log("this.getImgData=",JSON.stringify(this.getImgData()));
       GalleryObject.push(imgObject);
       localStorage.setItem('ImageGallery',JSON.stringify(GalleryObject));
         
