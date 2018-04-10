@@ -16,7 +16,7 @@
       <img id="img1" [src]="this.url" alt="your image" class="displayImage" width="100%" height="auto" />
     </div>
     <div class="align-center">
-      <button type="button" class="btn btn-default addbut" (click)="addImageToGallery(); this.imgUrl.nativeElement.value = ''; this.url=''; this.showModal=false;"
+      <button type="button" class="btn btn-default addbut" (click)="addImageToGallery(); this.url=''; "
         data-dismiss="modal">
         Add
         <img src="assets/images/add.png" width="30px" height="30px" alt="Add This Image to Galery" />

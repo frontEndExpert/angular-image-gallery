@@ -29,7 +29,9 @@ div.upload-header > .imginput {
     font-size: 18px!important;
 }
 
-
+.align-center{
+    text-align: center!important;
+}
 
 div.upload-header > .close{
     order: 2!important;
@@ -37,13 +39,15 @@ div.upload-header > .close{
     text-align: right!important;
 }
 #img1.displayImage{
-    height: 600px!important;
-    width: auto;
+    /* height: 600px!important; */
+    /* width: 100%; */
     max-width: 900px!important;
-    max-height: 600px!important;
+    max-height: 900px!important;
 }
 .addbut{
     margin: 10px;
+    border-radius: 20px;
+    text-align: center;
 }
 .myimg{
     font-size: 18px;

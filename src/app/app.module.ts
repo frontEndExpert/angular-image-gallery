@@ -38,7 +38,7 @@ const routes: Routes = paths;
     FormsModule, 
     ReactiveFormsModule,
     NgxPaginationModule,
-    RouterModule.forRoot(routes),
+    //RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
   entryComponents: [

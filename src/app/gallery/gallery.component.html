@@ -1,36 +1,39 @@
-<div class="container">
+<div class="container-fluid">
     <div class="header">
-        <span class="title">Image Gallery</span>
-        <!--button (click)="showAddWin()"
-        data-toggle="modal" data-target="#AddImgModal" class="btn btn-link mybut" type="button">
-            <span class="glyphicon glyphicon-plus-sign" ></span>(click)="showAddWin()"
-        </button-->
-        <button type="button" class="btn btn-link mybut"   (click)="openAdd()">
+        <div class="title">
+           <span>Image Gallery</span> 
+        </div>
+        <div class="btnadd">
+            <button class="btn btn-link mybut" type="button"  (click)="openAdd()">
             <img src="assets/images/add.png" width="40px" height="40px" alt="Add Image to Galery" />
-        </button>
+            </button> 
+        </div>
     </div>
 
   <div class="cards">
-    <!-- gallery images here   (click)="showDisplayImg(imgObject.id)" -->
+    <!-- gallery images here  -->
     <div *ngFor="let imgObject of galleryObject | paginate: 
       { id:'gallery', itemsPerPage: maxSize, currentPage: currentPage }; let i = index;">
       <a (click)="openImg(imgObject.id)" >
         <img class="img-box" src='{{imgObject.url}}' />
       </a>
-      <!--span> FOR DEBUGGING id: {{imgObject.id}} date: {{imgObject.dateCreated}} index: {{i}}</span-->
     </div>
   </div>
 
-    <p>Total Number of Images in Gallery: {{numberOfImages}}</p>
-    <div id="pagination" class="pagination-box">
+    <div id="pagination" class="pagination-box align-center">
         <pagination-controls id="gallery" (pageChange)="currentPage = $event" [maxSize]="5" directionLinks="true" autoHide="true"
             [previousLabel]="'<'" [nextLabel]="'>'" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
         </pagination-controls>
     </div>
+
     <div class="footer">
-        <button class="btn btn-link " (click)="this.deleteAllImages();">
+        <div class="ftitle">Total Number of Images in Gallery: {{numberOfImages}}</div>
+        <div class="fbut">
+           <button class="btn btn-default abut" (click)="this.deleteAllImages();">
             <img src="assets/images/delall.png" width="30px" height="30px" alt="Delete All Galery Images" />
-        </button> Delete All Galery Images!!!
+            Delete All Galery Images!!! 
+            </button> 
+        </div>
     </div>
   </div>
  

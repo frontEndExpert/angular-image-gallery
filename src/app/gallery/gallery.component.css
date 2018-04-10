@@ -41,6 +41,8 @@
     font-size: 14px!important;
     text-align: center;
 }
+
+
 .btnadd{
     order: 2!important;
     width: 60px!important;
@@ -96,6 +98,10 @@
     text-align: center!important;
 }
 
+.pagination-box{
+    margin: 20px!important;
+    font-size: 20px;
+}
 .footer{
     display: flex;
     width: 100%!important;
@@ -107,9 +113,14 @@
     width: auto;
     flex-grow: 5;
     align-content: stretch;
-    font-size: 16px;
+    font-size: 18px;
 }
 .fbut{
     order: 2;
-    width: 200px;
+    width: 250px;
+    font-size: 18px;
+    
+}
+.abut{
+    border-radius: 20px;
 }

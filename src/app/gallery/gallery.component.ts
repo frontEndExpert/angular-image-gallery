@@ -14,11 +14,6 @@ import { DisplayImageComponent } from '../display-image/display-image.component'
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  imgObject: any;
-  galleryObject: any = this.ls.getImageGallery();
-  numberOfImages: number = (this.galleryObject) ? this.galleryObject.length : 0;
-  differ: IterableDiffer < any > ;
-
   @ViewChild('imgInput')
   imgUrl: any;
 
@@ -32,6 +27,10 @@ export class GalleryComponent implements OnInit {
     this.differ = differs.find([]).create(null);
   }
 
+  imgObject: any;
+  galleryObject: any = this.ls.getImageGallery();
+  numberOfImages: number = (this.galleryObject) ? this.galleryObject.length : 0;
+  differ: IterableDiffer < any > ;
   url: any = "";
 
   imgId: number = 0;
@@ -61,7 +60,7 @@ export class GalleryComponent implements OnInit {
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();
     const changes = this.differ.diff(this.galleryObject);
-    /* 
+    /*
     	  if (changes) {
     	    console.log('new change');// for splitting up changes
           changes.forEachAddedItem(r => console.log('added ', r));
