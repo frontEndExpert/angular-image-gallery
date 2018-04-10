@@ -39,8 +39,6 @@ div.upload-header > .close{
     text-align: right!important;
 }
 #img1.displayImage{
-    /* height: 600px!important; */
-    /* width: 100%; */
     max-width: 900px!important;
     max-height: 900px!important;
 }
