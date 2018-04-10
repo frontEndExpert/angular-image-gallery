@@ -31,15 +31,11 @@ export class UploadImageComponent {
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      reader.onload = (e: any) => {
+      reader.onload = (event) => {
         this.url = event.target.result;
       };
       reader.readAsDataURL(event.target.files[0]);
     }
-  }
-
-  ngOnInit() {
-    // hhh
   }
 
   close() {

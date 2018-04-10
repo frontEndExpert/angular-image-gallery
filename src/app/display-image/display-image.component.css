@@ -10,7 +10,8 @@
 
 .big-img{
     order: 1;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
     flex-grow: 5;
     align-content: stretch;
     font-size: 14px!important;
@@ -23,4 +24,9 @@
     cursor: pointer;
 }
 
+.addbut{
+    margin: 10px;
+    border-radius: 20px;
+    text-align: center;
+}
 

@@ -4,7 +4,7 @@
       <input #imgInput type='file' (change)="readUrl($event)">
     </span>
     <button type="button" class="close pull-right" aria-label="Close" 
-      (click)="activeModal.dismiss('Cross click')">
+      (click)="close()">
       <span aria-hidden="true">
         <img src="assets/images/close.png" width="40px" height="40px" 
         alt="Close Window" />
@@ -13,13 +13,12 @@
   </div>
   <div *ngIf="this.url && this.url.length > 5" class="modal-body">
     <div class="myimg">
-      <img id="img1" [src]="this.url" alt="your image" class="displayImage" width="100%" height="auto" />
+      <img id="img1" [src]="this.url" alt="your image" class="displayImage"  />
     </div>
     <div class="align-center">
       <button type="button" class="btn btn-default addbut" (click)="addImageToGallery(); this.url=''; "
         data-dismiss="modal">
-        Add
-        <img src="assets/images/add.png" width="30px" height="30px" alt="Add This Image to Galery" />
+        Add <img src="assets/images/add.png" width="30px" height="30px" alt="Add This Image to Galery" />
       </button>
     </div>
   </div>
