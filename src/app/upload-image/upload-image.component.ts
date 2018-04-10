@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, ChangeDetectorRef, ApplicationRef, NgZone } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../image-local-storage.service';
 import { Image } from '../shared/models/Image';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -10,38 +10,39 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./upload-image.component.css']
 })
 
-export class UploadImageComponent{
+export class UploadImageComponent {
  // @ViewChild('addImgTemplate') template: BsModalRef;
 
   form: FormGroup;
-  loading: boolean = false;
-  url: any = "";
- 
+  loading = false;
+  url: any = '';
+
 
   constructor( private ls: LocalStorageService, public activeModal: NgbActiveModal) {
 }
 
 
-  addImageToGallery(){
+  addImageToGallery() {
     this.ls.addObjectToImageGallery(this.url);
-    //this.ref.markForCheck();private ref: ChangeDetectorRef
+    // this.ref.markForCheck();private ref: ChangeDetectorRef
     this.activeModal.close();
   }
 
-  readUrl(event:any) {
+  readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event:any) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
         this.url = event.target.result;
-      }
+      };
       reader.readAsDataURL(event.target.files[0]);
     }
   }
 
   ngOnInit() {
+    // hhh
   }
 
-  close(){
+  close() {
     this.activeModal.close();
   }
 
