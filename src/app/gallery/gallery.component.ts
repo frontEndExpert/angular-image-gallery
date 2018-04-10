@@ -25,17 +25,17 @@ export class GalleryComponent implements OnInit {
     this.differ = differs.find([]).create(null);
   }
 
-  url: any = "";
+  url: any = '';
   currentPage = 1; // the page being displayed by the pagination PIPE
-  maxSize: number = 8; // the number of cars/items display on 1 page
-  showModal: boolean= false;
+  maxSize = 8; // the number of cars/items display on 1 page
+  showModal = false;
   ngOnInit() {
     this.galleryObject = this.ls.getImageGallery();
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
   }
 
   deleteImage(id: number) {
-    if (confirm("Are you sure to delete this image")) {
+    if (confirm('Are you sure to delete this image')) {
       this.ls.deleteImage(id);
     }
   }
@@ -57,17 +57,17 @@ export class GalleryComponent implements OnInit {
   }
 
   deleteAllImages() {
-    if (confirm("Are you sure to delete all the images")) {
+    if (confirm('Are you sure to delete all the images')) {
       this.ls.deleteAllImages();
     }
   }
 
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
         this.url = event.target.result;
-      }
+      };
       reader.readAsDataURL(event.target.files[0]);
     }
   }
