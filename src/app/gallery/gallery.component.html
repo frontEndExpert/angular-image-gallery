@@ -27,7 +27,7 @@
     </div>
 
     <div class="footer">
-        <div class="ftitle">Total Number of Images in Gallery: {{numberOfImages}}</div>
+        <div class="ftitle" [class.red]="this.bigchange">Total Number of Images in Gallery: {{numberOfImages}}</div>
         <div class="fbut">
            <button class="btn btn-default abut" (click)="this.deleteAllImages();">
             <img src="assets/images/delall.png" width="30px" height="30px" alt="Delete All Galery Images" />

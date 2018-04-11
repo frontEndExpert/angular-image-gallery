@@ -35,6 +35,7 @@ export class GalleryComponent implements OnInit, DoCheck {
   currentPage = 1; // the page being displayed by the pagination PIPE
   maxSize = 8; // the number of cars/items display on 1 page
   showModal = false;
+  bigchange = false;
 
   ngOnInit() {
     this.galleryObject = this.ls.getImageGallery();
@@ -56,18 +57,18 @@ export class GalleryComponent implements OnInit, DoCheck {
     modalRef.componentInstance.imgO = imgObj;
   }
 
+
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
     const changes = this.differ.diff(this.galleryObject);
-    /*
-    	  if (changes) {
-    	    console.log('new change');// for splitting up changes
-          changes.forEachAddedItem(r => console.log('added ', r));
-          changes.forEachRemovedItem(r => console.log('removed ', r))
-          changes.forEachMovedItem(r => console.log('moved ', r))
+    if (changes) {
+    console.log('new change'); // for splitting up changes
+    this.bigchange = true;
+          // changes.forEachAddedItem(r => console.log('added ', r));
+          // changes.forEachRemovedItem(r => console.log('removed ', r));
+          // changes.forEachMovedItem(r => console.log('moved ', r));
         }
-         */
   }
 
   addImageToGallery() {
