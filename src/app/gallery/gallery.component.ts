@@ -1,5 +1,5 @@
 import { Component,  OnInit,  EventEmitter,  Input,  Output,  ChangeDetectorRef,
-         ChangeDetectionStrategy,  IterableDiffers,  IterableDiffer,  ViewChild } from '@angular/core';
+         ChangeDetectionStrategy,  IterableDiffers,  IterableDiffer,  ViewChild, DoCheck } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from '../image-local-storage.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +13,7 @@ import { DisplayImageComponent } from '../display-image/display-image.component'
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, DoCheck {
   @ViewChild('imgInput')
   imgUrl: any;
 
@@ -35,6 +35,7 @@ export class GalleryComponent implements OnInit {
   currentPage = 1; // the page being displayed by the pagination PIPE
   maxSize = 8; // the number of cars/items display on 1 page
   showModal = false;
+
   ngOnInit() {
     this.galleryObject = this.ls.getImageGallery();
     this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
@@ -57,6 +58,7 @@ export class GalleryComponent implements OnInit {
 
   ngDoCheck() {
     this.galleryObject = this.ls.getImageGallery();
+    this.numberOfImages = (this.galleryObject) ? this.galleryObject.length : 0;
     const changes = this.differ.diff(this.galleryObject);
     /*
     	  if (changes) {
